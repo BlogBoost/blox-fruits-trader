@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1020">
+<title>IdeaGen — генератор идей</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#0b1020;color:#f5f7ff;min-height:100vh}
+.wrap{max-width:760px;margin:auto;padding:24px 16px 50px}.hero{text-align:center;padding:28px 8px 20px}
+.logo{font-size:42px}.hero h1{font-size:34px;margin:8px 0 6px}.hero p{color:#aeb7d0;margin:0}
+.card{background:#121a2e;border:1px solid #273354;border-radius:22px;padding:18px;margin-top:16px;box-shadow:0 12px 35px #0004}
+label{display:block;font-weight:700;margin-bottom:8px}.cats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.cat{border:1px solid #303d62;background:#18213a;color:#e9edff;border-radius:13px;padding:12px;cursor:pointer;font-size:15px}.cat.active{border-color:#7c8cff;background:#26325b}
+button.main{width:100%;border:0;border-radius:15px;padding:15px;margin-top:14px;font-size:17px;font-weight:800;background:#7c8cff;color:white;cursor:pointer}
+.result{display:none}.tag{display:inline-block;padding:5px 9px;border-radius:99px;background:#25335d;color:#bfc8ff;font-size:12px}.result h2{font-size:25px;margin:12px 0 8px}.result p{color:#c5cce0;line-height:1.55}.actions{display:flex;gap:9px}.actions button{flex:1;border:1px solid #354263;background:#18213a;color:#fff;border-radius:12px;padding:11px;cursor:pointer}
+.history{color:#b8c0d5;font-size:14px}.history div{padding:9px 0;border-bottom:1px solid #273354}
+@media(max-width:430px){.hero h1{font-size:29px}.cats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero"><div class="logo">💡</div><h1>IdeaGen</h1><p>Генератор идей для твоих проектов</p></header>
+
+<section class="card">
+<label>Выбери категорию</label>
+<div class="cats" id="cats"></div>
+<button class="main" onclick="generate()">✨ Сгенерировать идею</button>
+</section>
+
+<section class="card result" id="result">
+<span class="tag" id="tag"></span>
+<h2 id="title"></h2>
+<p id="desc"></p>
+<p><b>🚀 Как начать:</b><br><span id="start"></span></p>
+<div class="actions"><button onclick="generate()">🔄 Ещё идея</button><button onclick="copyIdea()">📋 Копировать</button></div>
+</section>
+
+<section class="card">
+<label>🕘 Последние идеи</label>
+<div class="history" id="history">Пока пусто — сгенерируй первую идею.</div>
+</section>
+</div>
+
+<script>
+const data={
+"🎮 Игры":[
+["Челлендж на 24 часа","Выбери игру и придумай необычное ограничение: пройти уровень только одним оружием или способом.","Сделай короткий ролик с правилами, попытками и финальным результатом."],
+["Рейтинг игр для слабых телефонов","Составь список игр, которые хорошо работают на недорогих смартфонах.","Добавь FPS, размер, жанр и субъективную оценку."],
+["Случайный игровой челлендж","Создай генератор случайных заданий для любимой игры.","Начни с 30 заданий и добавь кнопку случайного выбора."]
+],
+"🎬 YouTube / Shorts":[
+["Угадай игру по 3 подсказкам","Зритель получает три подсказки и должен угадать игру.","Сделай 10 выпусков по 20–30 секунд."],
+["Топ-5 секретов","Расскажи пять малоизвестных фактов об игре.","Каждый факт показывай отдельным коротким фрагментом."],
+["Что будет, если...?","Придумай необычный эксперимент в игре.","Запиши результат и попроси зрителей предложить следующий эксперимент."]
+],
+"🎵 TikTok":[
+["1 факт за 15 секунд","Один короткий интересный факт на каждое видео.","Сделай крупный текст на экране и один факт без длинного вступления."],
+["Выбор подписчиков","Дай зрителям два варианта и выполни победивший.","В конце ролика оставь голосование за следующий выпуск."],
+["До/после","Покажи результат улучшения навыка, дизайна или игрового предмета.","Сделай быстрый переход между началом и результатом."]
+],
+"💰 Заработок":[
+["Превью для игровых видео","Делай простые превью для небольших каналов.","Создай 3 примера и предложи знакомым или небольшим авторам сделать первое превью недорого."],
+["Оформление игровых профилей","Помогай оформлять аватар, описание и визуальный стиль игрового профиля.","Собери несколько демонстрационных вариантов."],
+["Монтаж коротких роликов","Предлагай простой монтаж Shorts: обрезка, субтитры и переходы.","Сделай 2–3 примера до/после и покажи потенциальным клиентам."]
+],
+"💻 Проекты":[
+["Сайт генератора идей","Сделай сайт, который случайно выдаёт идеи по категориям.","Начни с 50 идей и добавь избранное."],
+["Трекер целей","Мини-сайт, где пользователь ставит цель и отмечает прогресс.","Добавь процент выполнения и сохранение данных в браузере."],
+["Каталог полезных инструментов","Собери в одном месте бесплатные инструменты для учёбы, игр и творчества.","Раздели инструменты по категориям и добавь поиск."]
+],
+"📱 Приложения":[
+["Генератор челленджей","Приложение случайно выбирает безопасное задание для игры или творчества.","Сделай категории и кнопку «Новое задание»."],
+["Планировщик контента","Календарь для идей видео и публикаций.","Добавь дату, название ролика и статус «готово»."],
+["Генератор названий","Создай генератор названий для каналов, проектов и команд.","Сделай несколько стилей и кнопку копирования."]
+],
+"🧠 Учёба":[
+["Генератор вопросов","Сайт случайно создаёт вопросы по выбранной теме.","Добавь уровни сложности и подсчёт правильных ответов."],
+["Карточки для повторения","Интерактивные карточки «вопрос → ответ».","Начни с одной школьной темы и постепенно добавляй другие."],
+["Помощник расписания","Простой планировщик уроков и домашних заданий.","Добавь приоритет и отметку выполненных задач."]
+]
+};
+let category="🎮 Игры", current=null;
+const cats=document.getElementById("cats");
+Object.keys(data).forEach(c=>{let b=document.createElement("button");b.className="cat"+(c===category?" active":"");b.textContent=c;b.onclick=()=>{category=c;document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));b.classList.add("active")};cats.appendChild(b)});
+function generate(){
+ const arr=data[category], item=arr[Math.floor(Math.random()*arr.length)];
+ current={category,title:item[0],desc:item[1],start:item[2]};
+ document.getElementById("tag").textContent=category;
+ document.getElementById("title").textContent=item[0];
+ document.getElementById("desc").textContent=item[1];
+ document.getElementById("start").textContent=item[2];
+ document.getElementById("result").style.display="block";
+ let h=JSON.parse(localStorage.getItem("ideas")||"[]");h.unshift(item[0]);h=h.slice(0,5);localStorage.setItem("ideas",JSON.stringify(h));renderHistory();
+}
+function renderHistory(){let h=JSON.parse(localStorage.getItem("ideas")||"[]");document.getElementById("history").innerHTML=h.length?h.map(x=>"<div>💡 "+escapeHtml(x)+"</div>").join(""):"Пока пусто — сгенерируй первую идею."}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+async function copyIdea(){if(!current)return;let t=`${current.title}\n${current.desc}\nКак начать: ${current.start}`;try{await navigator.clipboard.writeText(t);alert("Идея скопирована!")}catch(e){alert(t)}}
+renderHistory();
+</script>
+</body>
+</html>
