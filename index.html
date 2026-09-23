@@ -94,17 +94,17 @@
         const items = [
             { name: `Dark Blade`, type: `Меч`, value: 50000 }, { name: `Triple Dark Blade`, type: `Меч`, value: 20500 },
             { name: `Fruit Notifier`, type: `Пасс`, value: 20000 }, { name: `Fast Boats`, type: `Пасс`, value: 19250 },
-            { name: `2x Money`, type: `Пасс`, value: 16000 }, { name: `2x Mastery`, type: `Пасс", value: 12000 },
+            { name: `2x Money`, type: `Пасс`, value: 16000 }, { name: `2x Mastery`, type: `Пасс`, value: 12000 },
             { name: `Dark Scroll`, type: `Свиток`, value: 11000 }, { name: `Lucky Scroll`, type: `Свиток`, value: 9350 },
             { name: `Kitsune`, type: `Фрукт`, value: 250 }, { name: `Dragon`, type: `Фрукт`, value: 250 },
             { name: `Leopard`, type: `Фрукт`, value: 227 }, { name: `Spirit`, type: `Фрукт`, value: 227 },
-            { name: `Control`, type: `Фрукт', value: 200 }, { name: `Venom`, type: `Фрукт`, value: 200 },
+            { name: `Control`, type: `Фрукт`, value: 200 }, { name: `Venom`, type: `Фрукт`, value: 200 },
             { name: `Shadow`, type: `Фрукт`, value: 190 }, { name: `Dough`, type: `Фрукт`, value: 80 },
             { name: `Mammoth`, type: `Фрукт`, value: 75 }, { name: `T-Rex`, type: `Фрукт`, value: 60 },
             { name: `Blizzard`, type: `Фрукт`, value: 40 }, { name: `Portal`, type: `Фрукт`, value: 35 },
             { name: `Rumble`, type: `Фрукт`, value: 30 }, { name: `Buddha`, type: `Фрукт`, value: 27 },
             { name: `Phoenix`, type: `Фрукт`, value: 27 }, { name: `Spider`, type: `Фрукт`, value: 14 },
-            { name: `Love`, type: `Фрукт`, value: 14 }, { name: `Magma', type: `Фрукт`, value: 13 },
+            { name: `Love`, type: `Фрукт`, value: 14 }, { name: `Magma`, type: `Фрукт`, value: 13 },
             { name: `Light`, type: `Фрукт`, value: 13 }, { name: `Ice`, type: `Фрукт`, value: 8 }
         ];
         const trades = [
@@ -119,11 +119,13 @@
             const tl = document.getElementById(`their-list`);
             const tb = document.getElementById(`price-table-body`);
             
+            if (!yl || !tl || !tb) return;
+            
             yl.innerHTML = ``;
             tl.innerHTML = ``;
             tb.innerHTML = ``;
 
-            items.forEach((item, i) => {
+            items.forEach((item) => {
                 yl.innerHTML += `<label class="item-checkbox"><input type="checkbox" data-val="${item.value}" onchange="calc()">${item.name} (${item.value})</label>`;
                 tl.innerHTML += `<label class="item-checkbox"><input type="checkbox" data-val="${item.value}" onchange="calc()">${item.name} (${item.value})</label>`;
                 tb.innerHTML += `<tr><td><b>${item.name}</b></td><td>${item.type}</td><td style="color:var(--gold); font-weight:bold;">${item.value}</td></tr>`;
@@ -134,4 +136,4 @@
         function calc() {
             let y = 0, t = 0;
             document.querySelectorAll(`#your-list input:checked`).forEach(c => y += parseInt(c.getAttribute(`data-val`)));
-document.querySelectorAll(#their-list input:checked).forEach(c => t += parseInt(c.getAttribute(data-val)));document.getElementById(your-total).innerText = y;document.getElementById(their-total).innerText = t;const v = document.getElementById(calc-verdict);if(y===0&&t===0) { v.innerText=Выберите предметы; v.style.color=white; return; }const diff = t - y, p = (diff / y) * 100;if(Math.abs(p) <= 12) { v.innerText=⚖️ Честно (Fair); v.style.color=var(--gold); }else if(p > 12) { v.innerText=📈 Выгодно тебе (Win!); v.style.color=var(--success); }else { v.innerText=📉 В минус тебе (Lose); v.style.color=var(--danger); }}function renderFeed(list) {const f = document.getElementById(market-feed); f.innerHTML = ``;list.forEach(tr => f.innerHTML += <div class="feed-item" onclick="openChat(${tr.id})"><b>${tr.user}</b> отдает <span style="color:#ff6b6b">${tr.give}</span> за <span style="color:#2ecc71">${tr.get}</span><br><small style="color:var(--text-muted)">Нажмите, чтобы открыть чат 💬</small></div>);}function filterMarket() {const q = document.getElementById(m-search).value.toLowerCase();renderFeed(trades.filter(t => t.give.toLowerCase().includes(q) || t.get.toLowerCase().includes(q) || t.user.toLowerCase().includes(q)));}function openChat(id) {const tr = trades.find(t => t.id === id); if(!tr) return;activeId = id; document.getElementById(market-feed).style.display=none;document.getElementById(chat-ui).style.display=flex; document.getElementById(chat-user).innerText=tr.user;document.getElementById(chat-messages).innerHTML = <div class="msg system">Чат открыт. Обменяйтесь никами Roblox.</div><div class="msg incoming">Привет! Го трейд? Мой ник в игре <b>${tr.user}_Trade</b>. Пиши свой, я добавлю!</div>;}function closeChat() { document.getElementById(chat-ui).style.display=none; document.getElementById(market-feed).style.display=flex; activeId=null; }function sendMsg() {const i = document.getElementById(chat-input), txt = i.value.trim(); if(!txt) return;const m = document.getElementById(chat-messages); m.innerHTML += <div class="msg outgoing">${txt}</div>; i.value=``; m.scrollTop=m.scrollHeight;setTimeout(() => { if(!activeId) return; m.innerHTML+=<div class="msg incoming">Отлично, принял! Заходи на сервак в Кафе, жду тебя там.</div>; m.scrollTop=m.scrollHeight; }, 1500);}window.document.addEventListener(DOMContentLoaded, init);if (document.body) init();
+ document.querySelectorAll(#their-list input:checked).forEach(c => t += parseInt(c.getAttribute(data-val)));document.getElementById(your-total).innerText = y;document.getElementById(their-total).innerText = t;const v = document.getElementById(calc-verdict);if(y===0&&t===0) { v.innerText = Выберите предметы; v.style.color = white; return; }const diff = t - y, p = (diff / y) * 100;if(Math.abs(p) <= 12) { v.innerText = ⚖️ Честно (Fair); v.style.color = var(--gold); }else if(p > 12) { v.innerText = 📈 Выгодно тебе (Win!); v.style.color = var(--success); }else { v.innerText = 📉 В минус тебе (Lose); v.style.color = var(--danger); }}function renderFeed(list) {const f = document.getElementById(market-feed); if(!f) return; f.innerHTML = ``;list.forEach(tr => f.innerHTML += <div class="feed-item" onclick="openChat(${tr.id})"><b>${tr.user}</b> отдает <span style="color:#ff6b6b">${tr.give}</span> за <span style="color:#2ecc71">${tr.get}</span><br><small style="color:var(--text-muted)">Нажмите, чтобы открыть чат 💬</small></div>);}function filterMarket() {const q = document.getElementById(m-search).value.toLowerCase();renderFeed(trades.filter(t => t.give.toLowerCase().includes(q) || t.get.toLowerCase().includes(q) || t.user.toLowerCase().includes(q)));}function openChat(id) {const tr = trades.find(t => t.id === id); if(!tr) return;activeId = id; document.getElementById(market-feed).style.display = none;document.getElementById(chat-ui).style.display = flex; document.getElementById(chat-user).innerText = tr.user;document.getElementById(chat-messages).innerHTML = <div class="msg system">Чат открыт. Обменяйтесь никами Roblox.</div><div class="msg incoming">Привет! Го трейд? Мой ник в игре <b>${tr.user}_Trade</b>. Пиши свой, я добавлю!</div>;}function closeChat() { document.getElementById(chat-ui).style.display = none; document.getElementById(market-feed).style.display = flex; activeId = null; }function sendMsg() {const i = document.getElementById(chat-input), txt = i.value.trim(); if(!txt) return;const m = document.getElementById(chat-messages); m.innerHTML += <div class="msg outgoing">${txt}</div>; i.value = ``; m.scrollTop = m.scrollHeight;setTimeout(() => { if(!activeId) return; m.innerHTML += <div class="msg incoming">Отлично, принял! Заходи на сервак в Кафе, жду тебя там.</div>; m.scrollTop = m.scrollHeight; }, 1500);}window.document.addEventListener(DOMContentLoaded, init);if (document.readyState === interactive || document.readyState === complete) { init(); }
