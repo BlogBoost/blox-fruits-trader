@@ -17,12 +17,12 @@
         .calc-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 10px; }
         @media (min-width: 600px) { .calc-grid { grid-template-columns: 1fr 1fr; } }
         .calc-box { background: #191632; padding: 10px; border-radius: 8px; border: 1px dashed var(--accent); }
-        .items-list { max-height: 160px; overflow-y: auto; background: #0f0d22; border-radius: 6px; padding: 5px; }
-        .item-checkbox { display: flex; align-items: center; padding: 6px; font-size: 13px; cursor: pointer; border-bottom: 1px solid #1a1635; }
+        .items-list { max-height: 200px; overflow-y: auto; background: #0f0d22; border-radius: 6px; padding: 5px; }
+        .item-checkbox { display: flex; align-items: center; padding: 8px; font-size: 13px; cursor: pointer; border-bottom: 1px solid #1a1635; }
         .item-checkbox:last-child { border-bottom: none; }
-        .item-checkbox input { margin-right: 8px; }
-        .total-price { font-size: 16px; font-weight: bold; color: var(--gold); text-align: right; margin-top: 5px; }
-        .verdict-box { background: #0f0d22; padding: 10px; border-radius: 8px; text-align: center; font-size: 16px; font-weight: bold; }
+        .item-checkbox input { margin-right: 10px; transform: scale(1.2); }
+        .total-price { font-size: 17px; font-weight: bold; color: var(--gold); text-align: right; margin-top: 8px; }
+        .verdict-box { background: #0f0d22; padding: 12px; border-radius: 8px; text-align: center; font-size: 16px; font-weight: bold; }
         .feed-list { display: flex; flex-direction: column; gap: 8px; max-height: 300px; overflow-y: auto; }
         .feed-item { background: #181530; padding: 10px; border-radius: 8px; cursor: pointer; border-left: 4px solid var(--accent); font-size: 13px; }
         .feed-item:hover { background: #201c40; }
@@ -38,9 +38,6 @@
         .chat-input-area button { background: var(--accent); color: white; border: none; padding: 0 10px; border-radius: 4px; cursor: pointer; }
         .donate-widget { background: linear-gradient(135deg, #1c133a 0%, #2f124d 100%); text-align: center; }
         .donate-btn { display: inline-block; background: #ffcc00; color: #111; font-weight: bold; padding: 10px 20px; border-radius: 6px; text-decoration: none; margin-top: 5px; }
-        .tier-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-        .tier-table th, .tier-table td { padding: 6px; text-align: left; border-bottom: 1px solid #1f1b3a; }
-        .tier-table th { background: #15122b; color: var(--gold); }
     </style>
 </head>
 <body>
@@ -50,27 +47,52 @@
             <div class="card" style="margin-bottom: 20px;">
                 <h2>Мульти-калькулятор сделок</h2>
                 <div class="calc-grid">
+                    <!-- ЛЕВОЕ ОКНО -->
                     <div class="calc-box">
                         <h3>Ты отдаешь:</h3>
-                        <div class="items-list" id="your-list"></div>
+                        <div class="items-list" id="your-list">
+                            <label class="item-checkbox"><input type="checkbox" value="50000" onchange="calc()">Dark Blade (50000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="20500" onchange="calc()">Triple Dark Blade (20500)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="20000" onchange="calc()">Fruit Notifier (20000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="19250" onchange="calc()">Fast Boats (19250)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="16000" onchange="calc()">2x Money (16000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="12000" onchange="calc()">2x Mastery (12000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="11000" onchange="calc()">Dark Scroll (11000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="250" onchange="calc()">Kitsune (250)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="250" onchange="calc()">Dragon (250)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="227" onchange="calc()">Leopard (227)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="227" onchange="calc()">Spirit (227)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="200" onchange="calc()">Control (200)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="200" onchange="calc()">Venom (200)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="80" onchange="calc()">Dough (80)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="27" onchange="calc()">Buddha (27)</label>
+                        </div>
                         <div class="total-price">Итого: <span id="your-total">0</span></div>
                     </div>
+                    <!-- ПРАВОЕ ОКНО -->
                     <div class="calc-box">
                         <h3>Ты получаешь:</h3>
-                        <div class="items-list" id="their-list"></div>
+                        <div class="items-list" id="their-list">
+                            <label class="item-checkbox"><input type="checkbox" value="50000" onchange="calc()">Dark Blade (50000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="20500" onchange="calc()">Triple Dark Blade (20500)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="20000" onchange="calc()">Fruit Notifier (20000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="19250" onchange="calc()">Fast Boats (19250)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="16000" onchange="calc()">2x Money (16000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="12000" onchange="calc()">2x Mastery (12000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="11000" onchange="calc()">Dark Scroll (11000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="250" onchange="calc()">Kitsune (250)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="250" onchange="calc()">Dragon (250)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="227" onchange="calc()">Leopard (227)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="227" onchange="calc()">Spirit (227)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="200" onchange="calc()">Control (200)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="200" onchange="calc()">Venom (200)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="80" onchange="calc()">Dough (80)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="27" onchange="calc()">Buddha (27)</label>
+                        </div>
                         <div class="total-price">Итого: <span id="their-total">0</span></div>
                     </div>
                 </div>
                 <div class="verdict-box" id="calc-verdict">Выберите предметы для оценки</div>
-            </div>
-            <div class="card">
-                <h2>Справочник цен (По Тир-листу)</h2>
-                <div style="max-height: 250px; overflow-y: auto;">
-                    <table class="tier-table">
-                        <thead><tr><th>Предмет</th><th>Тип</th><th>Ценность</th></tr></thead>
-                        <tbody id="price-table-body"></tbody>
-                    </table>
-                </div>
             </div>
         </div>
         <div>
@@ -80,60 +102,6 @@
             </div>
             <div class="card">
                 <h2>Активные предложения рынка</h2>
-                <input type="text" id="m-search" placeholder="Поиск предмета..." oninput="filterMarket()" style="width:94%; padding:6px; background:#0f0d22; border:1px solid #252146; color:white; border-radius:6px; margin-bottom:10px;">
-                <div class="chat-container" id="chat-ui">
-                    <div class="chat-header"><span>Чат с <span id="chat-user" style="color:var(--gold);">---</span></span><button onclick="closeChat()" style="background:none; border:none; color:var(--danger); font-weight:bold; cursor:pointer;">✕</button></div>
-                    <div class="chat-messages" id="chat-messages"></div>
-                    <div class="chat-input-area"><input type="text" id="chat-input" placeholder="Напишите ник..." onkeydown="if(event.key===`Enter`) sendMsg()"><button onclick="sendMsg()">➜</button></div>
-                </div>
-                <div class="feed-list" id="market-feed"></div>
-            </div>
-        </div>
-    </div>
-    <script>
-        const items = [
-            { name: `Dark Blade`, type: `Меч`, value: 50000 }, { name: `Triple Dark Blade`, type: `Меч`, value: 20500 },
-            { name: `Fruit Notifier`, type: `Пасс`, value: 20000 }, { name: `Fast Boats`, type: `Пасс`, value: 19250 },
-            { name: `2x Money`, type: `Пасс`, value: 16000 }, { name: `2x Mastery`, type: `Пасс`, value: 12000 },
-            { name: `Dark Scroll`, type: `Свиток`, value: 11000 }, { name: `Lucky Scroll`, type: `Свиток`, value: 9350 },
-            { name: `Kitsune`, type: `Фрукт`, value: 250 }, { name: `Dragon`, type: `Фрукт`, value: 250 },
-            { name: `Leopard`, type: `Фрукт`, value: 227 }, { name: `Spirit`, type: `Фрукт`, value: 227 },
-            { name: `Control`, type: `Фрукт`, value: 200 }, { name: `Venom`, type: `Фрукт`, value: 200 },
-            { name: `Shadow`, type: `Фрукт`, value: 190 }, { name: `Dough`, type: `Фрукт`, value: 80 },
-            { name: `Mammoth`, type: `Фрукт`, value: 75 }, { name: `T-Rex`, type: `Фрукт`, value: 60 },
-            { name: `Blizzard`, type: `Фрукт`, value: 40 }, { name: `Portal`, type: `Фрукт`, value: 35 },
-            { name: `Rumble`, type: `Фрукт`, value: 30 }, { name: `Buddha`, type: `Фрукт`, value: 27 },
-            { name: `Phoenix`, type: `Фрукт`, value: 27 }, { name: `Spider`, type: `Фрукт`, value: 14 },
-            { name: `Love`, type: `Фрукт`, value: 14 }, { name: `Magma`, type: `Фрукт`, value: 13 },
-            { name: `Light`, type: `Фрукт`, value: 13 }, { name: `Ice`, type: `Фрукт`, value: 8 }
-        ];
-        const trades = [
-            { id: 1, user: `BloxKing`, give: `Kitsune`, get: `2x Money` },
-            { id: 2, user: `Fruit_Bro`, give: `Dough, Buddha`, get: `Leopard` },
-            { id: 3, user: `SlayerX`, give: `Dark Blade`, get: `Dragon, Kitsune` }
-        ];
-        let activeId = null;
-
-        function init() {
-            const yl = document.getElementById(`your-list`);
-            const tl = document.getElementById(`their-list`);
-            const tb = document.getElementById(`price-table-body`);
-            
-            if (!yl || !tl || !tb) return;
-            
-            yl.innerHTML = ``;
-            tl.innerHTML = ``;
-            tb.innerHTML = ``;
-
-            items.forEach((item) => {
-                yl.innerHTML += `<label class="item-checkbox"><input type="checkbox" data-val="${item.value}" onchange="calc()">${item.name} (${item.value})</label>`;
-                tl.innerHTML += `<label class="item-checkbox"><input type="checkbox" data-val="${item.value}" onchange="calc()">${item.name} (${item.value})</label>`;
-                tb.innerHTML += `<tr><td><b>${item.name}</b></td><td>${item.type}</td><td style="color:var(--gold); font-weight:bold;">${item.value}</td></tr>`;
-            });
-            renderFeed(trades);
-        }
-
-        function calc() {
-            let y = 0, t = 0;
-            document.querySelectorAll(`#your-list input:checked`).forEach(c => y += parseInt(c.getAttribute(`data-val`)));
- document.querySelectorAll(#their-list input:checked).forEach(c => t += parseInt(c.getAttribute(data-val)));document.getElementById(your-total).innerText = y;document.getElementById(their-total).innerText = t;const v = document.getElementById(calc-verdict);if(y===0&&t===0) { v.innerText = Выберите предметы; v.style.color = white; return; }const diff = t - y, p = (diff / y) * 100;if(Math.abs(p) <= 12) { v.innerText = ⚖️ Честно (Fair); v.style.color = var(--gold); }else if(p > 12) { v.innerText = 📈 Выгодно тебе (Win!); v.style.color = var(--success); }else { v.innerText = 📉 В минус тебе (Lose); v.style.color = var(--danger); }}function renderFeed(list) {const f = document.getElementById(market-feed); if(!f) return; f.innerHTML = ``;list.forEach(tr => f.innerHTML += <div class="feed-item" onclick="openChat(${tr.id})"><b>${tr.user}</b> отдает <span style="color:#ff6b6b">${tr.give}</span> за <span style="color:#2ecc71">${tr.get}</span><br><small style="color:var(--text-muted)">Нажмите, чтобы открыть чат 💬</small></div>);}function filterMarket() {const q = document.getElementById(m-search).value.toLowerCase();renderFeed(trades.filter(t => t.give.toLowerCase().includes(q) || t.get.toLowerCase().includes(q) || t.user.toLowerCase().includes(q)));}function openChat(id) {const tr = trades.find(t => t.id === id); if(!tr) return;activeId = id; document.getElementById(market-feed).style.display = none;document.getElementById(chat-ui).style.display = flex; document.getElementById(chat-user).innerText = tr.user;document.getElementById(chat-messages).innerHTML = <div class="msg system">Чат открыт. Обменяйтесь никами Roblox.</div><div class="msg incoming">Привет! Го трейд? Мой ник в игре <b>${tr.user}_Trade</b>. Пиши свой, я добавлю!</div>;}function closeChat() { document.getElementById(chat-ui).style.display = none; document.getElementById(market-feed).style.display = flex; activeId = null; }function sendMsg() {const i = document.getElementById(chat-input), txt = i.value.trim(); if(!txt) return;const m = document.getElementById(chat-messages); m.innerHTML += <div class="msg outgoing">${txt}</div>; i.value = ``; m.scrollTop = m.scrollHeight;setTimeout(() => { if(!activeId) return; m.innerHTML += <div class="msg incoming">Отлично, принял! Заходи на сервак в Кафе, жду тебя там.</div>; m.scrollTop = m.scrollHeight; }, 1500);}window.document.addEventListener(DOMContentLoaded, init);if (document.readyState === interactive || document.readyState === complete) { init(); }
+                <div class="feed-list" id="market-feed">
+                    <div class="feed-item" onclick="openChat(1)"><b>BloxKing</b> отдает <span style="color:#ff6b6b">Kitsune</span> за <span style="color:#2ecc71">2x Money</span><br><small style="color:var(--text-muted)">Нажмите, чтобы открыть чат 💬</small></div>
+Используйте код с осторожностью.Fruit_Bro отдает Dough, Buddha за LeopardНажмите, чтобы открыть чат 💬Чат с ---✕➜function calc() {let y = 0, t = 0;document.querySelectorAll('#your-list input:checked').forEach(c => y += parseInt(c.value));document.querySelectorAll('#their-list input:checked').forEach(c => t += parseInt(c.value));document.getElementById('your-total').innerText = y;document.getElementById('their-total').innerText = t;const v = document.getElementById('calc-verdict');if(y===0&&t===0) { v.innerText = "Выберите предметы"; v.style.color = "white"; return; }const diff = t - y, p = (diff / y) * 100;if(Math.abs(p) <= 12) { v.innerText = "⚖️ Честно (Fair)"; v.style.color = "var(--gold)"; }else if(p > 12) { v.innerText = "📈 Выгодно тебе (Win!)"; v.style.color = "var(--success)"; }else { v.innerText = "📉 В минус тебе (Lose)"; v.style.color = "var(--danger)"; }}function openChat(id) {document.getElementById('market-feed').style.display = 'none';document.getElementById('chat-ui').style.display = 'flex';const user = id === 1 ? 'BloxKing' : 'Fruit_Bro';document.getElementById('chat-user').innerText = user;document.getElementById('chat-messages').innerHTML = 'Чат открыт. Обменяйтесь никами.Привет! Го трейд? Мой ник в игре ' + user + '_Trade. Пиши свой!';}function closeChat() { document.getElementById('chat-ui').style.display = 'none'; document.getElementById('market-feed').style.display = 'flex'; }function sendMsg() {const i = document.getElementById('chat-input'), txt = i.value.trim(); if(!txt) return;const m = document.getElementById('chat-messages'); m.innerHTML += '' + txt + ''; i.value = ''; m.scrollTop = m.scrollHeight;setTimeout(() => { m.innerHTML += 'Отлично, принял! Заходи в игру в Кафе, жду.'; m.scrollTop = m.scrollHeight; }, 1500);}
