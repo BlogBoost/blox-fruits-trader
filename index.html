@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="notranslate" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" content="notranslate">
     <title>Blox Fruits Trade Hub</title>
     <style>
         :root { --bg: #0b0914; --panel: #131125; --accent: #bc47ff; --text: #ffffff; --text-muted: #8b87a3; --gold: #ffd700; --success: #2ecc71; --danger: #e74c3c; }
@@ -16,8 +17,9 @@
         .calc-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 10px; }
         @media (min-width: 600px) { .calc-grid { grid-template-columns: 1fr 1fr; } }
         .calc-box { background: #191632; padding: 10px; border-radius: 8px; border: 1px dashed var(--accent); }
-        .items-list { max-height: 130px; overflow-y: auto; background: #0f0d22; border-radius: 6px; padding: 5px; }
-        .item-checkbox { display: flex; align-items: center; padding: 5px; font-size: 13px; cursor: pointer; }
+        .items-list { max-height: 160px; overflow-y: auto; background: #0f0d22; border-radius: 6px; padding: 5px; }
+        .item-checkbox { display: flex; align-items: center; padding: 6px; font-size: 13px; cursor: pointer; border-bottom: 1px solid #1a1635; }
+        .item-checkbox:last-child { border-bottom: none; }
         .item-checkbox input { margin-right: 8px; }
         .total-price { font-size: 16px; font-weight: bold; color: var(--gold); text-align: right; margin-top: 5px; }
         .verdict-box { background: #0f0d22; padding: 10px; border-radius: 8px; text-align: center; font-size: 16px; font-weight: bold; }
@@ -74,7 +76,7 @@
         <div>
             <div class="card donate-widget" style="margin-bottom: 20px;">
                 <h3 style="margin:0; font-size:15px;">🎁 Поддержать проект</h3>
-                <a href="https://donationalerts.com" target="_blank" class="donate-btn">⚡ Задонатить</a>
+                <a href="https://www.donationalerts.com/r/ghoul_kanekiken" target="_blank" class="donate-btn">⚡ Задонатить</a>
             </div>
             <div class="card">
                 <h2>Активные предложения рынка</h2>
@@ -111,21 +113,25 @@
             { id: 3, user: "SlayerX", give: "Dark Blade", get: "Dragon, Kitsune" }
         ];
         let activeId = null;
-        window.onload = () => {
-            const yl = document.getElementById('your-list'), tl = document.getElementById('their-list'), tb = document.getElementById('price-table-body');
+
+        function init() {
+            const yl = document.getElementById('your-list');
+            const tl = document.getElementById('their-list');
+            const tb = document.getElementById('price-table-body');
+            
+            yl.innerHTML = "";
+            tl.innerHTML = "";
+            tb.innerHTML = "";
+
             items.forEach((item, i) => {
-                yl.innerHTML += `<label class="item-checkbox"><input type="checkbox" data-val="${item.value}" onchange="calc()">${item.name} (${item.value})</label>`;
-                tl.innerHTML += `<label class="item-checkbox"><input type="checkbox" data-val="${item.value}" onchange="calc()">${item.name} (${item.value})</label>`;
-                tb.innerHTML += `<tr><td><b>${item.name}</b></td><td>${item.type}</td><td style="color:var(--gold); font-weight:bold;">${item.value}</td></tr>`;
+                yl.innerHTML += '<label class="item-checkbox"><input type="checkbox" data-val="' + item.value + '" onchange="calc()">' + item.name + ' (' + item.value + ')</label>';
+                tl.innerHTML += '<label class="item-checkbox"><input type="checkbox" data-val="' + item.value + '" onchange="calc()">' + item.name + ' (' + item.value + ')</label>';
+                tb.innerHTML += '<tr><td><b>' + item.name + '</b></td><td>' + item.type + '</td><td style="color:var(--gold); font-weight:bold;">' + item.value + '</td></tr>';
             });
             renderFeed(trades);
-        };
+        }
+
         function calc() {
             let y = 0, t = 0;
-            document.querySelectorAll('#your-list input:checked').forEach(c => y += parseInt(c.dataset.val));
-            document.querySelectorAll('#their-list input:checked').forEach(c => t += parseInt(c.dataset.val));
-            document.getElementById('your-total').innerText = y;
-            document.getElementById('their-total').innerText = t;
-            const v = document.getElementById('calc-verdict');
-            if(y===0&&t===0) { v.innerText="Выберите предметы"; v.style.color="white"; return; }
-const diff = t - y, p = (diff / y) * 100;if(Math.abs(p) <= 12) { v.innerText="⚖️ Честно (Fair)"; v.style.color="var(--gold)"; }else if(p > 12) { v.innerText="📈 Выгодно тебе (Win!)"; v.style.color="var(--success)"; }else { v.innerText="📉 В минус тебе (Lose)"; v.style.color="var(--danger)"; }}function renderFeed(list) {const f = document.getElementById('market-feed'); f.innerHTML = "";list.forEach(tr => f.innerHTML += <div class="feed-item" onclick="openChat(${tr.id})"><b>${tr.user}</b> отдает <span style="color:#ff6b6b">${tr.give}</span> за <span style="color:#2ecc71">${tr.get}</span><br><small style="color:var(--text-muted)">Нажмите, чтобы открыть чат 💬</small></div>);}function filterMarket() {const q = document.getElementById('m-search').value.toLowerCase();renderFeed(trades.filter(t => t.give.toLowerCase().includes(q) || t.get.toLowerCase().includes(q) || t.user.toLowerCase().includes(q)));}function openChat(id) {const tr = trades.find(t => t.id === id); if(!tr) return;activeId = id; document.getElementById('market-feed').style.display='none';document.getElementById('chat-ui').style.display='flex'; document.getElementById('chat-user').innerText=tr.user;document.getElementById('chat-messages').innerHTML = <div class="msg system">Чат открыт. Обменяйтесь никами Roblox.</div><div class="msg incoming">Привет! Го трейд? Мой ник в игре <b>${tr.user}_Trade</b>. Пиши свой, я добавлю!</div>;}function closeChat() { document.getElementById('chat-ui').style.display='none'; document.getElementById('market-feed').style.display='flex'; activeId=null; }function sendMsg() {const i = document.getElementById('chat-input'), txt = i.value.trim(); if(!txt) return;const m = document.getElementById('chat-messages'); m.innerHTML += <div class="msg outgoing">${txt}</div>; i.value=""; m.scrollTop=m.scrollHeight;setTimeout(() => { if(!activeId) return; m.innerHTML+=<div class="msg incoming">Отлично, принял! Заходи на сервак в Кафе, жду тебя там.</div>; m.scrollTop=m.scrollHeight; }, 1500);}
+            document.querySelectorAll('#your-list input:checked').forEach(c => y += parseInt(c.getAttribute('data-val')));
+document.querySelectorAll('#their-list input:checked').forEach(c => t += parseInt(c.getAttribute('data-val')));document.getElementById('your-total').innerText = y;document.getElementById('their-total').innerText = t;const v = document.getElementById('calc-verdict');if(y===0&&t===0) { v.innerText="Выберите предметы"; v.style.color="white"; return; }const diff = t - y, p = (diff / y) * 100;if(Math.abs(p) <= 12) { v.innerText="⚖️ Честно (Fair)"; v.style.color="var(--gold)"; }else if(p > 12) { v.innerText="📈 Выгодно тебе (Win!)"; v.style.color="var(--success)"; }else { v.innerText="📉 В минус тебе (Lose)"; v.style.color="var(--danger)"; }}function renderFeed(list) {const f = document.getElementById('market-feed'); f.innerHTML = "";list.forEach(tr => f.innerHTML += '' + tr.user + ' отдает ' + tr.give + ' за ' + tr.get + 'Нажмите, чтобы открыть чат 💬');}function filterMarket() {const q = document.getElementById('m-search').value.toLowerCase();renderFeed(trades.filter(t => t.give.toLowerCase().includes(q) || t.get.toLowerCase().includes(q) || t.user.toLowerCase().includes(q)));}function openChat(id) {const tr = trades.find(t => t.id === id); if(!tr) return;activeId = id; document.getElementById('market-feed').style.display='none';document.getElementById('chat-ui').style.display='flex'; document.getElementById('chat-user').innerText=tr.user;document.getElementById('chat-messages').innerHTML = 'Чат открыт. Обменяйтесь никами Roblox.Привет! Го трейд? Мой ник в игре ' + tr.user + '_Trade. Пиши свой, я добавлю!';}function closeChat() { document.getElementById('chat-ui').style.display='none'; document.getElementById('market-feed').style.display='flex'; activeId=null; }function sendMsg() {const i = document.getElementById('chat-input'), txt = i.value.trim(); if(!txt) return;const m = document.getElementById('chat-messages'); m.innerHTML += '' + txt + ''; i.value=""; m.scrollTop=m.scrollHeight;setTimeout(() => { if(!activeId) return; m.innerHTML+='Отлично, принял! Заходи на сервак в Кафе, жду тебя там.'; m.scrollTop=m.scrollHeight; }, 1500);}window.document.addEventListener("DOMContentLoaded", init);
