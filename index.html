@@ -5,40 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google" content="notranslate">
     <title>Blox Fruits Trade Hub</title>
-    <style>
-        :root { --bg: #0b0914; --panel: #131125; --accent: #bc47ff; --text: #ffffff; --text-muted: #8b87a3; --gold: #ffd700; --success: #2ecc71; --danger: #e74c3c; }
-        body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 0; }
-        header { background: var(--panel); padding: 15px; border-bottom: 2px solid var(--accent); text-align: center; }
-        header h1 { margin: 0; font-size: 22px; color: var(--gold); }
-        .main-layout { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 15px; max-width: 1200px; margin: 0 auto; }
-        @media (min-width: 900px) { .main-layout { grid-template-columns: 2fr 1fr; } }
-        .card { background: var(--panel); border-radius: 12px; padding: 15px; border: 1px solid #1f1b3a; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        h2 { margin: 0 0 10px 0; font-size: 16px; border-bottom: 1px solid #252146; padding-bottom: 5px; color: #d1cfff; }
-        .calc-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 10px; }
-        @media (min-width: 600px) { .calc-grid { grid-template-columns: 1fr 1fr; } }
-        .calc-box { background: #191632; padding: 10px; border-radius: 8px; border: 1px dashed var(--accent); }
-        .items-list { max-height: 200px; overflow-y: auto; background: #0f0d22; border-radius: 6px; padding: 5px; }
-        .item-checkbox { display: flex; align-items: center; padding: 8px; font-size: 13px; cursor: pointer; border-bottom: 1px solid #1a1635; }
-        .item-checkbox:last-child { border-bottom: none; }
-        .item-checkbox input { margin-right: 10px; transform: scale(1.2); }
-        .total-price { font-size: 17px; font-weight: bold; color: var(--gold); text-align: right; margin-top: 8px; }
-        .verdict-box { background: #0f0d22; padding: 12px; border-radius: 8px; text-align: center; font-size: 16px; font-weight: bold; }
-        .feed-list { display: flex; flex-direction: column; gap: 8px; max-height: 300px; overflow-y: auto; }
-        .feed-item { background: #181530; padding: 10px; border-radius: 8px; cursor: pointer; border-left: 4px solid var(--accent); font-size: 13px; }
-        .feed-item:hover { background: #201c40; }
-        .chat-container { display: none; flex-direction: column; height: 300px; background: #0f0d22; border-radius: 8px; overflow: hidden; border: 1px solid var(--accent); }
-        .chat-header { background: #1c183a; padding: 8px; font-size: 13px; font-weight: bold; display: flex; justify-content: space-between; }
-        .chat-messages { flex: 1; padding: 10px; overflow-y: auto; display: flex; flex-direction: column; gap: 5px; font-size: 12px; }
-        .msg { padding: 6px 10px; border-radius: 10px; max-width: 80%; }
-        .msg.system { background: #1a1635; color: #bfaeff; align-self: center; text-align: center; font-size: 11px; }
-        .msg.incoming { background: #221d47; align-self: flex-start; }
-        .msg.outgoing { background: var(--accent); align-self: flex-end; }
-        .chat-input-area { display: flex; padding: 5px; background: #131125; gap: 5px; }
-        .chat-input-area input { flex: 1; padding: 6px; background: #0f0d22; border: 1px solid #252146; color: white; border-radius: 4px; }
-        .chat-input-area button { background: var(--accent); color: white; border: none; padding: 0 10px; border-radius: 4px; cursor: pointer; }
-        .donate-widget { background: linear-gradient(135deg, #1c133a 0%, #2f124d 100%); text-align: center; }
-        .donate-btn { display: inline-block; background: #ffcc00; color: #111; font-weight: bold; padding: 10px 20px; border-radius: 6px; text-decoration: none; margin-top: 5px; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header><h1>Blox Fruits Trade Hub</h1></header>
@@ -47,7 +14,6 @@
             <div class="card" style="margin-bottom: 20px;">
                 <h2>Мульти-калькулятор сделок</h2>
                 <div class="calc-grid">
-                    <!-- ЛЕВОЕ ОКНО -->
                     <div class="calc-box">
                         <h3>Ты отдаешь:</h3>
                         <div class="items-list" id="your-list">
@@ -69,7 +35,6 @@
                         </div>
                         <div class="total-price">Итого: <span id="your-total">0</span></div>
                     </div>
-                    <!-- ПРАВОЕ ОКНО -->
                     <div class="calc-box">
                         <h3>Ты получаешь:</h3>
                         <div class="items-list" id="their-list">
@@ -103,48 +68,266 @@
             <div class="card">
                 <h2>Активные предложения рынка</h2>
                 <div class="feed-list" id="market-feed">
-                    BloxKing отдает Kitsune за 2x Money
-Нажмите, чтобы открыть чат 💬
-Fruit_Bro отдает Dough, Buddha за Leopard
-Нажмите, чтобы открыть чат 💬
-
-
-Чат с игроком✕
-
-➜
-
-
-
-
-
+                    <div class="feed-item" onclick="openChat(1)"><b>BloxKing</b> отдает <span style="color:#ff6b6b">Kitsune</span> за <span style="color:#2ecc71">2x Money</span><br><small style="color:var(--text-muted)">Нажмите, чтобы открыть чат 💬</small></div>
+                    <div class="feed-item" onclick="openChat(2)"><b>Fruit_Bro</b> отдает <span style="color:#ff6b6b">Dough, Buddha</span> за <span style="color:#2ecc71">Leopard</span><br><small style="color:var(--text-muted)">Нажмите, чтобы открыть чат 💬</small></div>
+                </div>
+                <div class="chat-container" id="chat-ui">
+                    <div class="chat-header"><span>Чат с игроком</span><button onclick="closeChat()" style="background:none; border:none; color:var(--danger); font-weight:bold; cursor:pointer;">✕</button></div>
+                    <div class="chat-messages" id="chat-messages"></div>
+                    <div class="chat-input-area"><input type="text" id="chat-input" placeholder="Напишите ник..."><button onclick="sendMsg()">➜</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+:root { 
+    --bg: #0b0914; 
+    --panel: #131125; 
+    --accent: #bc47ff; 
+    --text: #ffffff; 
+    --text-muted: #8b87a3; 
+    --gold: #ffd700; 
+    --success: #2ecc71; 
+    --danger: #e74c3c; 
+}
+body { 
+    font-family: system-ui, sans-serif; 
+    background: var(--bg); 
+    color: var(--text); 
+    margin: 0; 
+    padding: 0; 
+}
+header { 
+    background: var(--panel); 
+    padding: 15px; 
+    border-bottom: 2px solid var(--accent); 
+    text-align: center; 
+}
+header h1 { 
+    margin: 0; 
+    font-size: 22px; 
+    color: var(--gold); 
+}
+.main-layout { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+    padding: 15px; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+}
+@media (min-width: 900px) { 
+    .main-layout { grid-template-columns: 2fr 1fr; } 
+}
+.card { 
+    background: var(--panel); 
+    border-radius: 12px; 
+    padding: 15px; 
+    border: 1px solid #1f1b3a; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+}
+h2 { 
+    margin: 0 0 10px 0; 
+    font-size: 16px; 
+    border-bottom: 1px solid #252146; 
+    padding-bottom: 5px; 
+    color: #d1cfff; 
+}
+.calc-grid { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 10px; 
+    margin-bottom: 10px; 
+}
+@media (min-width: 600px) { 
+    .calc-grid { grid-template-columns: 1fr 1fr; } 
+}
+.calc-box { 
+    background: #191632; 
+    padding: 10px; 
+    border-radius: 8px; 
+    border: 1px dashed var(--accent); 
+}
+.items-list { 
+    max-height: 200px; 
+    overflow-y: auto; 
+    background: #0f0d22; 
+    border-radius: 6px; 
+    padding: 5px; 
+}
+.item-checkbox { 
+    display: flex; 
+    align-items: center; 
+    padding: 8px; 
+    font-size: 13px; 
+    cursor: pointer; 
+    border-bottom: 1px solid #1a1635; 
+}
+.item-checkbox:last-child { 
+    border-bottom: none; 
+}
+.item-checkbox input { 
+    margin-right: 10px; 
+    transform: scale(1.2); 
+}
+.total-price { 
+    font-size: 17px; 
+    font-weight: bold; 
+    color: var(--gold); 
+    text-align: right; 
+    margin-top: 8px; 
+}
+.verdict-box { 
+    background: #0f0d22; 
+    padding: 12px; 
+    border-radius: 8px; 
+    text-align: center; 
+    font-size: 16px; 
+    font-weight: bold; 
+}
+.feed-list { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 8px; 
+    max-height: 300px; 
+    overflow-y: auto; 
+}
+.feed-item { 
+    background: #181530; 
+    padding: 10px; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    border-left: 4px solid var(--accent); 
+    font-size: 13px; 
+}
+.feed-item:hover { 
+    background: #201c40; 
+}
+.chat-container { 
+    display: none; 
+    flex-direction: column; 
+    height: 300px; 
+    background: #0f0d22; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    border: 1px solid var(--accent); 
+}
+.chat-header { 
+    background: #1c183a; 
+    padding: 8px; 
+    font-size: 13px; 
+    font-weight: bold; 
+    display: flex; 
+    justify-content: space-between; 
+}
+.chat-messages { 
+    flex: 1; 
+    padding: 10px; 
+    overflow-y: auto; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 5px; 
+    font-size: 12px; 
+}
+.msg { 
+    padding: 6px 10px; 
+    border-radius: 10px; 
+    max-width: 80%; 
+}
+.msg.system { 
+    background: #1a1635; 
+    color: #bfaeff; 
+    align-self: center; 
+    text-align: center; 
+    font-size: 11px; 
+}
+.msg.incoming { 
+    background: #221d47; 
+    align-self: flex-start; 
+    color: #ffffff;
+}
+.msg.outgoing { 
+    background: var(--accent); 
+    align-self: flex-end; 
+    color: #ffffff;
+}
+.chat-input-area { 
+    display: flex; 
+    padding: 5px; 
+    background: #131125; 
+    gap: 5px; 
+}
+.chat-input-area input { 
+    flex: 1; 
+    padding: 6px; 
+    background: #0f0d22; 
+    border: 1px solid #252146; 
+    color: white; 
+    border-radius: 4px; 
+}
+.chat-input-area button { 
+    background: var(--accent); 
+    color: white; 
+    border: none; 
+    padding: 0 10px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+}
+.donate-widget { 
+    background: linear-gradient(135deg, #1c133a 0%, #2f124d 100%); 
+    text-align: center; 
+}
+.donate-btn { 
+    display: inline-block; 
+    background: #ffcc00; 
+    color: #111; 
+    font-weight: bold; 
+    padding: 10px 20px; 
+    border-radius: 6px; 
+    text-decoration: none; 
+    margin-top: 5px; 
+}
 let total1 = 0;
 let total2 = 0;
+
 function calc(element, boxNumber) {
-let val = parseInt(element.value);
-if (boxNumber === 1) {
-if (element.checked) { total1 += val; } else { total1 -= val; }
-document.getElementById('your-total').innerText = total1;
-} else {
-if (element.checked) { total2 += val; } else { total2 -= val; }
-document.getElementById('their-total').innerText = total2;
+    let val = parseInt(element.value);
+    if (boxNumber === 1) {
+        if (element.checked) { total1 += val; } else { total1 -= val; }
+        document.getElementById('your-total').innerText = total1;
+    } else {
+        if (element.checked) { total2 += val; } else { total2 -= val; }
+        document.getElementById('their-total').innerText = total2;
+    }
+
+    const v = document.getElementById('calc-verdict');
+    if (total1 === 0 && total2 === 0) { v.innerText = 'Выберите предметы'; return; }
+    if (total1 === 0) { v.innerText = 'Заполните обе стороны'; return; }
+    
+    let diff = total2 - total1;
+    let p = (diff / total1) * 100;
+    
+    if (Math.abs(p) <= 12) { v.innerText = '⚖️ Честно (Fair)'; }
+    else if (p > 12) { v.innerText = '📈 Выгодно тебе (Win!)'; }
+    else { v.innerText = '📉 В минус тебе (Lose)'; }
 }
-const v = document.getElementById('calc-verdict');
-if (total1 === 0 && total2 === 0) { v.innerText = 'Выберите предметы'; return; }
-if (total1 === 0) { v.innerText = 'Заполните обе стороны'; return; }
-let diff = total2 - total1;
-let p = (diff / total1) * 100;
-if (Math.abs(p) <= 12) { v.innerText = '⚖️ Честно (Fair)'; }
-else if (p > 12) { v.innerText = '📈 Выгодно тебе (Win!)'; }
-else { v.innerText = '📉 В минус тебе (Lose)'; }
-}
+
 function openChat(id) {
-document.getElementById('market-feed').style.display = 'none';
-document.getElementById('chat-ui').style.display = 'flex';
-document.getElementById('chat-messages').innerHTML = 'Чат открыт. Обменяйтесь никами.Привет! Го трейд? Пиши свой ник Roblox, я добавлю!';
+    document.getElementById('market-feed').style.display = 'none';
+    document.getElementById('chat-ui').style.display = 'flex';
+    document.getElementById('chat-messages').innerHTML = '<div class="msg system">Чат открыт. Обменяйтесь никами.</div><div class="msg incoming">Привет! Го трейд? Пиши свой ник Roblox, я добавлю!</div>';
 }
-function closeChat() { document.getElementById('chat-ui').style.display = 'none'; document.getElementById('market-feed').style.display = 'flex'; }
+
+function closeChat() { 
+    document.getElementById('chat-ui').style.display = 'none'; 
+    document.getElementById('market-feed').style.display = 'flex'; 
+}
+
 function sendMsg() {
-const i = document.getElementById('chat-input'), txt = i.value.trim(); if(!txt) return;
-const m = document.getElementById('chat-messages'); m.innerHTML += '' + txt + ''; i.value = ''; m.scrollTop = m.scrollHeight;
-setTimeout(() => { m.innerHTML += 'Отлично, принял! Заходи в игру в Кафе, жду.'; m.scrollTop = m.scrollHeight; }, 1500);
+    const i = document.getElementById('chat-input'), txt = i.value.trim(); if(!txt) return;
+    const m = document.getElementById('chat-messages'); m.innerHTML += '<div class="msg outgoing">' + txt + '</div>'; i.value = ''; m.scrollTop = m.scrollHeight;
+    setTimeout(() => { m.innerHTML += '<div class="msg incoming">Отлично, принял! Заходи в игру в Кафе, жду.</div>'; m.scrollTop = m.scrollHeight; }, 1500);
 }
+        
