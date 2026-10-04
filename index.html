@@ -103,4 +103,48 @@
             <div class="card">
                 <h2>Активные предложения рынка</h2>
                 <div class="feed-list" id="market-feed">
-BloxKing отдает Kitsune за 2x MoneyНажмите, чтобы открыть чат 💬Fruit_Bro отдает Dough, Buddha за LeopardНажмите, чтобы открыть чат 💬Чат с игроком✕➜let total1 = 0;let total2 = 0;function calc(element, boxNumber) {let val = parseInt(element.value);if (boxNumber === 1) {if (element.checked) { total1 += val; } else { total1 -= val; }document.getElementById(your-total).innerText = total1;} else {if (element.checked) { total2 += val; } else { total2 -= val; }document.getElementById(their-total).innerText = total2;}const v = document.getElementById(calc-verdict);if (total1 === 0 && total2 === 0) { v.innerText = Выберите предметы; return; }if (total1 === 0) { v.innerText = Заполните обе стороны; return; }let diff = total2 - total1;let p = (diff / total1) * 100;if (Math.abs(p) <= 12) { v.innerText = ⚖️ Честно (Fair); }else if (p > 12) { v.innerText = 📈 Выгодно тебе (Win!); }else { v.innerText = 📉 В минус тебе (Lose); }}function openChat(id) {document.getElementById(market-feed).style.display = none;document.getElementById(chat-ui).style.display = flex;document.getElementById(chat-messages).innerHTML = <div class="msg system">Чат открыт. Обменяйтесь никами.</div><div class="msg incoming">Привет! Го трейд? Пиши свой ник Roblox, я добавлю!</div>;}function closeChat() { document.getElementById(chat-ui).style.display = none; document.getElementById(market-feed).style.display = flex; }function sendMsg() {const i = document.getElementById(chat-input), txt = i.value.trim(); if(!txt) return;const m = document.getElementById(chat-messages); m.innerHTML += <div class="msg outgoing">${txt}</div>; i.value = ``; m.scrollTop = m.scrollHeight;setTimeout(() => { m.innerHTML += <div class="msg incoming">Отлично, принял! Заходи в игру в Кафе, жду.</div>; m.scrollTop = m.scrollHeight; }, 1500);}
+                    BloxKing отдает Kitsune за 2x Money
+Нажмите, чтобы открыть чат 💬
+Fruit_Bro отдает Dough, Buddha за Leopard
+Нажмите, чтобы открыть чат 💬
+
+
+Чат с игроком✕
+
+➜
+
+
+
+
+
+let total1 = 0;
+let total2 = 0;
+function calc(element, boxNumber) {
+let val = parseInt(element.value);
+if (boxNumber === 1) {
+if (element.checked) { total1 += val; } else { total1 -= val; }
+document.getElementById('your-total').innerText = total1;
+} else {
+if (element.checked) { total2 += val; } else { total2 -= val; }
+document.getElementById('their-total').innerText = total2;
+}
+const v = document.getElementById('calc-verdict');
+if (total1 === 0 && total2 === 0) { v.innerText = 'Выберите предметы'; return; }
+if (total1 === 0) { v.innerText = 'Заполните обе стороны'; return; }
+let diff = total2 - total1;
+let p = (diff / total1) * 100;
+if (Math.abs(p) <= 12) { v.innerText = '⚖️ Честно (Fair)'; }
+else if (p > 12) { v.innerText = '📈 Выгодно тебе (Win!)'; }
+else { v.innerText = '📉 В минус тебе (Lose)'; }
+}
+function openChat(id) {
+document.getElementById('market-feed').style.display = 'none';
+document.getElementById('chat-ui').style.display = 'flex';
+document.getElementById('chat-messages').innerHTML = 'Чат открыт. Обменяйтесь никами.Привет! Го трейд? Пиши свой ник Roblox, я добавлю!';
+}
+function closeChat() { document.getElementById('chat-ui').style.display = 'none'; document.getElementById('market-feed').style.display = 'flex'; }
+function sendMsg() {
+const i = document.getElementById('chat-input'), txt = i.value.trim(); if(!txt) return;
+const m = document.getElementById('chat-messages'); m.innerHTML += '' + txt + ''; i.value = ''; m.scrollTop = m.scrollHeight;
+setTimeout(() => { m.innerHTML += 'Отлично, принял! Заходи в игру в Кафе, жду.'; m.scrollTop = m.scrollHeight; }, 1500);
+}
