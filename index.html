@@ -8,84 +8,72 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header><h1>Blox Fruits Trade Hub (12.10.2026)</h1></header>
+    <header><h1>Blox Fruits Maknemy Trade Hub</h1></header>
     <div class="main-layout">
         <div>
             <div class="card" style="margin-bottom: 20px;">
-                <h2>Мульти-калькулятор сделок</h2>
+                <h2>Мульти-калькулятор сделок (12.10.2026)</h2>
                 <div class="calc-grid">
                     <!-- ЛЕВОЕ ОКНО -->
                     <div class="calc-box">
                         <h3>Ты отдаешь:</h3>
                         <div class="items-list" id="your-list">
-                            <!-- БОЖЕСТВЕННЫЙ ТИР -->
                             <div class="tier-separator">👑 ДОРОГИЕ ПАССЫ / СКИНЫ</div>
-                            <label class="item-checkbox"><input type="checkbox" value="80000" onchange="calc(this, 1)">Fruit Notifier Permanent (80000)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="30000" onchange="calc(this, 1)">Dark Blade Permanent (30000)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="25000" onchange="calc(this, 1)">Yoru Скин Мутация (25000)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="25000" onchange="calc(this, 1)">Anchor Мутация (25000)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="20000" onchange="calc(this, 1)">Fast Boats Permanent (20000)</label>
-                            
+                            <label class="item-checkbox"><input type="checkbox" value="80000" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Перм. Фрукт (80000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="30000" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Yoru Мутация Скин (30000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="25000" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Золотая Мутация (25000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="20000" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Мутация Закат (20000)</label>
+
                             <div class="tier-separator">⭐ МИФИЧЕСКИЕ ПЕРМЫ / ФРУКТЫ</div>
-                            <label class="item-checkbox"><input type="checkbox" value="19250" onchange="calc(this, 1)">Kitsune Permanent (19250)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="19250" onchange="calc(this, 1)">Dragon Permanent (19250)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="16000" onchange="calc(this, 1)">Leopard Permanent (16000)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="14250" onchange="calc(this, 1)">Dough Мутация (14250)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="12500" onchange="calc(this, 1)">T-Rex Мутация (12500)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="12350" onchange="calc(this, 1)">Kitsune Мутация (12350)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="12000" onchange="calc(this, 1)">Mammoth Мутация (12000)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="11000" onchange="calc(this, 1)">Spirit Permanent (11000)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="10000" onchange="calc(this, 1)">2x Money / Mastery Пасс (10000)</label>
-                            
-                            <div class="tier-separator">💎 ТОП ФРУКТЫ И СРЕДНИЕ ПЕРМЫ</div>
-                            <label class="item-checkbox"><input type="checkbox" value="9350" onchange="calc(this, 1)">Control Permanent (9350)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="7800" onchange="calc(this, 1)">Venom Permanent (7800)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="7800" onchange="calc(this, 1)">Shadow Permanent (7800)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="6250" onchange="calc(this, 1)">Dough Permanent (6250)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="6140" onchange="calc(this, 1)">Buddha Мутация (6140)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="5950" onchange="calc(this, 1)">Blizzard Мутация (5950)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="5800" onchange="calc(this, 1)">Portal Мутация (5800)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="5700" onchange="calc(this, 1)">Rumble Мутация (5700)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="5400" onchange="calc(this, 1)">Dark Blade Пасс (5400)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="5400" onchange="calc(this, 1)">Mammoth Permanent (5400)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="5400" onchange="calc(this, 1)">T-Rex Permanent (5400)</label>
-                            
-                            <div class="tier-separator">🍎 ФРУКТЫ И ОБЫЧНЫЕ ПРЕДМЕТЫ</div>
-                            <label class="item-checkbox"><input type="checkbox" value="5200" onchange="calc(this, 1)">Blizzard Permanent (5200)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="5000" onchange="calc(this, 1)">Portal Permanent (5000)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="5340" onchange="calc(this, 1)">2x Drop Chance Пасс (5340)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="4850" onchange="calc(this, 1)">Rumble Permanent (4850)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="4750" onchange="calc(this, 1)">Buddha Permanent (4750)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="4700" onchange="calc(this, 1)">Sound Permanent (4700)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="4500" onchange="calc(this, 1)">Phoenix Permanent (4500)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="4350" onchange="calc(this, 1)">Spider Permanent (4350)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="3600" onchange="calc(this, 1)">Love Permanent (3600)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="3500" onchange="calc(this, 1)">Kitsune Фрукт (3500)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="3500" onchange="calc(this, 1)">Quake Permanent (3500)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="3400" onchange="calc(this, 1)">Dragon Фрукт (3400)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="3400" onchange="calc(this, 1)">Magma Permanent (3400)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="2800" onchange="calc(this, 1)">Light Permanent (2800)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="2350" onchange="calc(this, 1)">Barrier Permanent (2350)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="2300" onchange="calc(this, 1)">Rubber Permanent (2300)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="2000" onchange="calc(this, 1)">Ghost Permanent (2000)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="2000" onchange="calc(this, 1)">Leopard Фрукт (2000)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="1900" onchange="calc(this, 1)">Ice Permanent (1900)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="1900" onchange="calc(this, 1)">Spirit Фрукт (1900)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="1800" onchange="calc(this, 1)">Control Фрукт (1800)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="1800" onchange="calc(this, 1)">Venom Фрукт (1800)</label>
-                            
-                            <div class="tier-separator">📦 МЕЛКИЕ ПРЕДМЕТЫ / ФРУКТЫ</div>
-                            <label class="item-checkbox"><input type="checkbox" value="1600" onchange="calc(this, 1)">Shadow Фрукт (1600)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="1500" onchange="calc(this, 1)">Dough Фрукт (1500)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="1450" onchange="calc(this, 1)">Mammoth Фрукт (1450)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="1400" onchange="calc(this, 1)">+1 Fruit Storage Пасс (1400)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="1350" onchange="calc(this, 1)">T-Rex Фрукт (1350)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="1300" onchange="calc(this, 1)">Blizzard Фрукт (1300)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="1300" onchange="calc(this, 1)">Fast Boats Пасс (1300)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="1200" onchange="calc(this, 1)">Portal Фрукт (1200)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="1200" onchange="calc(this, 1)">Rumble Фрукт (1200)</label>
-                            <label class="item-checkbox"><input type="checkbox" value="1200" onchange="calc(this, 1)">Buddha Фрукт (1200)</label>
-                            Rocket Мелкий (10)
+                            <label class="item-checkbox"><input type="checkbox" value="19250" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Kitsune Перм. / Фрукт (19250)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="16000" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Leopard Перм. / Фрукт (16000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="14250" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Dough Мутация (14250)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="12500" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">T-Rex Мутация (12500)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="12350" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img" style="filter: hue-rotate(180deg);">Kitsune Синяя Мутация (12350)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="12000" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Mammoth Мутация (12000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="11000" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Дракон Мутация (11000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="10000" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Пасс Х2 Мани (10000)</label>
+
+                            <div class="tier-separator">💎 ТОП ТИР ФРУКТЫ</div>
+                            <label class="item-checkbox"><input type="checkbox" value="3500" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Будда Фрукт (3500)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="3400" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Феникс Фрукт (3400)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="2800" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Торнадо / Близзард Фрукт (2800)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="2350" onchange="calc(this, 1 Ram)"><img src="https://nocookie.net" class="f-img">Лава / Магма Фрукт (2350)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="2300" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Зеленые Нити / Спайдер (2300)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="1900" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Сердечко / Лав Фрукт (1900)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="1350" onchange="calc(this, 1)"><img src="https://nocookie.net" class="f-img">Призрак Фрукт (1350)</label>
+                        </div>
+                        <div class="total-price">Итого: <span id="your-total">0</span></div>
+                    </div>
+
+                    <!-- ПРАВОЕ ОКНО -->
+                    <div class="calc-box">
+                        <h3>Ты получаешь:</h3>
+                        <div class="items-list" id="their-list">
+                            <div class="tier-separator">👑 ДОРОГИЕ ПАССЫ / СКИНЫ</div>
+                            <label class="item-checkbox"><input type="checkbox" value="80000" onchange="calc(this, 2)"><img src="https://nocookie.net" class="f-img">Перм. Фрукт (80000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="30000" onchange="calc(this, 2)"><img src="https://nocookie.net" class="f-img">Yoru Мутация Скин (30000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="25000" onchange="calc(this, 2)"><img src="https://nocookie.net" class="f-img">Золотая Мутация (25000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="20000" onchange="calc(this, 2)"><img src="https://nocookie.net" class="f-img">Мутация Закат (20000)</label>
+
+                            <div class="tier-separator">⭐ МИФИЧЕСКИЕ ПЕРМЫ / ФРУКТЫ</div>
+                            <label class="item-checkbox"><input type="checkbox" value="19250" onchange="calc(this, 2)"><img src="https://nocookie.net" class="f-img">Kitsune Перм. / Фрукт (19250)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="16000" onchange="calc(this, 2)"><img src="https://nocookie.net" class="f-img">Leopard Перм. / Фрукт (16000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="14250" onchange="calc(this, 2)"><img src="https://nocookie.net" class="f-img">Dough Мутация (14250)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="12500" onchange="calc(this, 2)"><img src="https://nocookie.net" class="f-img">T-Rex Мутация (12500)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="12350" onchange="calc(this, 2)"><img src="https://nocookie.net" class="f-img" style="filter: hue-rotate(180deg);">Kitsune С. Мутация (12350)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="12000" onchange="calc(this, 2)"><img src="https://nocookie.net" class="f-img">Mammoth Мутация (12000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="11000" onchange="calc(this, 2)"><img src="https://nocookie.net" class="f-img">Дракон Мутация (11000)</label>
+                            <label class="item-checkbox"><input type="checkbox" value="10000" onchange="calc(this, 2)"><img src="https://nocookie.net" class="f-img">Пасс Х2 Мани (10000)</label>
+
+                            <div class="tier-separator">💎 ТОП ТИР ФРУКТЫ</div>
+                            <label class="item-checkbox"><input type="checkbox" value="3500" onchange="calc(this, 2)"><img src="https://nocookie.net" class="f-img">Будда Фрукт (3500)</label>
+                            Феникс Фрукт (3400)
+Торнадо / Близзард (2800)
+Лава / Магма Фрукт (2350)
+Зеленые Нити / Спайдер (2300)
+Сердечко / Лав Фрукт (1900)
+Призрак Фрукт (1350)
 Итого: 0
 
 
@@ -102,11 +90,42 @@
 
 BloxKing отдает Kitsune Фрукт за 2x Money Пасс
 Нажмите, чтобы открыть чат 💬
-Fruit_Bro отдает Dough Фрукт за Buddha Фрукт
-Нажмите, чтобы открыть чат 💬
 
 
 Чат с игроком✕
 
 ➜
-                            
+
+
+
+
+
+let total1 = 0; let total2 = 0;
+function calc(element, boxNumber) {
+let val = parseInt(element.value);
+if (boxNumber === 1) {
+if (element.checked) { total1 += val; } else { total1 -= val; }
+document.getElementById('your-total').innerText = total1;
+} else {
+if (element.checked) { total2 += val; } else { total2 -= val; }
+document.getElementById('their-total').innerText = total2;
+}
+const v = document.getElementById('calc-verdict');
+if (total1 === 0 && total2 === 0) { v.innerText = 'Выберите предметы'; v.style.color = 'white'; return; }
+if (total1 === 0) { v.innerText = 'Заполните обе стороны'; v.style.color = 'white'; return; }
+let diff = total2 - total1; let p = (diff / total1) * 100;
+if (Math.abs(p) <= 12) { v.innerText = '⚖️ Честно (Fair)'; v.style.color = '#ffd700'; }
+else if (p > 12) { v.innerText = '📈 Выгодно тебе (Win!)'; v.style.color = '#2ecc71'; }
+else { v.innerText = '📉 В минус тебе (Lose)'; v.style.color = '#e74c3c'; }
+}
+function openChat(id) {
+document.getElementById('market-feed').style.display = 'none';
+document.getElementById('chat-ui').style.display = 'flex';
+document.getElementById('chat-messages').innerHTML = 'Чат открыт. Обменяйтесь никами.Привет! Го трейд? Пиши свой ник Roblox, я добавлю!';
+}
+function closeChat() { document.getElementById('chat-ui').style.display = 'none'; document.getElementById('market-feed').style.display = 'flex'; }
+function sendMsg() {
+const i = document.getElementById('chat-input'), txt = i.value.trim(); if(!txt) return;
+const m = document.getElementById('chat-messages'); m.innerHTML += '' + txt + ''; i.value = ''; m.scrollTop = m.scrollHeight;
+setTimeout(() => { m.innerHTML += 'Отлично, принял! Заходи в игру в Кафе, жду.'; m.scrollTop = m.scrollHeight; }, 1500);
+}
